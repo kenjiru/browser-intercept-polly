@@ -1,0 +1,40 @@
+{
+  "description": "Intercepting browser requests using Polly",
+  "manifest_version": 2,
+  "name": "Intercept Plugin",
+  "version": "1.0",
+  "permissions": [
+    "webRequest",
+    "webRequestBlocking",
+    "<all_urls>"
+  ],
+  "background": {
+    "scripts": [
+      "background.js"
+    ]
+  },
+  "icons": {
+    "48": "icons/intercept-48.png",
+    "96": "icons/intercept-96.png"
+  },
+  "browser_action": {
+    "default_icon": {
+      "16": "icons/intercept-16.png",
+      "32": "icons/intercept-32.png"
+    },
+    "default_title": "Intercept Plugin Polly"
+  },
+  "devtools_page": "devtools_page.html",
+  "content_scripts": [
+    {
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "js": [
+        "inject_polly.js"
+      ],
+      "run_at": "document_start"
+    }
+  ]
+}
